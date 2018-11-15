@@ -1,28 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Admin, Resource} from 'react-admin';
+import dataProvider from './dataProvider';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import { BacteriaList, BacteriaEdit, BacteriaCreate } from './bacterias';
+import { BackgroundList, BackgroundEdit, BackgroundCreate} from './backgrounds';
+import { MethodList, MethodEdit, MethodCreate} from './methods';
+import { PhotoList, PhotoEdit, PhotoCreate} from './photos';
 
+
+const App = () => (
+  <Admin dataProvider={dataProvider} >
+        <Resource name="bacterias" list={BacteriaList} edit={BacteriaEdit} create={BacteriaCreate} />
+        <Resource name="backgrounds" list={BackgroundList} edit={BackgroundEdit} create={BackgroundCreate} />
+        <Resource name="methods" list={MethodList} edit={MethodEdit} create={MethodCreate} />
+        <Resource name="photos" list={PhotoList} edit={PhotoEdit} create={PhotoCreate} />
+    </Admin>
+);
 export default App;
